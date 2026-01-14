@@ -1,0 +1,12 @@
+import pandas as pd
+from src.preprocessing import ind_preprocessing, bnj_preprocessing
+
+
+def load_dataset(path, delimiter=";"):
+    return pd.read_csv(path, delimiter=delimiter)
+
+
+def prepare_dataset(df, src_col, tgt_col, add_tokens=True):
+    df = ind_preprocessing(df, src_col)
+    df = bnj_preprocessing(df, tgt_col, add_tokens=add_tokens)
+    return df
